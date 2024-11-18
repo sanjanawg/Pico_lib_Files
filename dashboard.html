@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dripstop Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .header {
+            background-color: rgba(52, 152, 219, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom-left-radius: 15px; /* Rounded bottom-left corner */
+            border-bottom-right-radius: 15px; /* Rounded bottom-right corner */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 16px;
+            align-self: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+        
+        .output-container {
+            max-width: 990px; /* Adjust this width as needed */
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1%; /* Adjust the margin-top as needed */
+            margin-bottom: 3%;
+        }
+
+        /* Emphasized output container styles */
+        .emphasized {
+            background-color: #e0f7fa; /* Change background color for emphasis */
+            border: 2px solid #03a9f4; /* Add border for emphasis */
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2); /* Enhance shadow for emphasis */
+        }
+
+        .emphasized .section h2 {
+            color: #03a9f4; /* Change heading color for emphasis */
+            font-weight: bold; /* Increase font weight for emphasis */
+        }
+
+        .section {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 15px;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+            font-size: 22px;
+            color: #3498db;
+            text-align: center;
+            /* Center the headings */
+        }
+
+        .parameter {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            width: 20%;
+            font-size: 14px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .parameter h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #414141;
+            text-align: center;
+        }
+
+        .parameter p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .section>div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+        }
+
+        /* Responsive Styling */
+        @media screen and (max-width: 600px) {
+
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header p {
+                margin-top: 5px;
+            }
+
+            .parameter {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .parameter h3 {
+                font-size: 16px;
+            }
+
+            .parameter p {
+                font-size: 12px;
+            }
+
+            .output-container {
+                margin: 20px auto; /* Adjusted margin for smaller screens */
+                margin-bottom: 20px; /* Adjusted bottom margin for smaller screens */
+                margin-left: 1%;
+                margin-right: 1%;
+                padding: 15px; /* Adjusted padding for smaller screens */
+            }
+
+            .container {
+                margin: 20px auto; /* Adjusted margin for smaller screens */
+                margin-bottom: 20px; /* Adjusted bottom margin for smaller screens */
+                margin-left: 1%;
+                margin-right: 1%;
+                padding: 15px; /* Adjusted padding for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Dripstop Dashboard</h1>
+        </div>
+
+        <div class="parameter" style="width:max-content;">
+            <p>Relative location: {{bed_num}}</p>
+            <p>Type of Fluid: {{fluid_type}}</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>⇒ Input Parameters</h2>
+            <div>
+                <div class="parameter">
+                    <h3>Bottle Volume</h3>
+                    <p>{{selected_bottle_volume}} mL</p>
+                </div>
+
+                <div class="parameter">
+                    <h3>Time set ⌚️</h3>
+                    <p>{{time_set_hr_min}}</p>
+                </div>
+
+                <div class="parameter">
+                    <h3>Dripset 💧</h3>
+                    <p>{{selected_drip_factor}} drops/mL</p>
+                </div>
+
+                <div class="parameter">
+                    <h3>Alarms ⏱</h3>
+                    <p>{{set_injection_alarms_formatted}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Output Parameters ⇒</h2>
+            <div>
+                <div class="parameter">
+                    <h3>Volume Consumed</h3>
+                    <p>{{volume_consumed}} mL</p>
+                </div>
+
+                <div class="parameter">
+                    <h3>Remaining time 🕕</h3>
+                    <p>{{time_left_hr_min}}</p>
+                </div>
+
+                <div class="parameter">
+                    <h3>Infusion rate 💧</h3>
+                    <p>{{current_infusion_rate}} mL/hr</p>
+                </div>
+
+                <div class="parameter">
+                    <h3>Alarms ⏱️</h3>
+                <!-- FORMAT: <p>25%<br>50%<br>75%</p>  -->
+                    <p>{{alarms_done_formatted}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2023 FAH Technologies
+    </footer>
+</body>
+
+</html>
